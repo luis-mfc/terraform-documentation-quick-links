@@ -2,7 +2,6 @@ import * as assert from 'assert';
 import { generateDocumentationUrl } from '../link-generator';
 
 suite('Generate Terraform Documentation Url Unit Tests', () => {
-
 	suite('Official providers', () => {
 		const testCases = {
 			"aws_instance": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance",
@@ -46,7 +45,7 @@ suite('Generate Terraform Documentation Url Unit Tests', () => {
 	suite('Unofficial providers not included in default provider but included in override setting', () => {
 		test("aquasecurity", () => {
 			assert.strictEqual(
-				generateDocumentationUrl("aquasec_image", { "aquasec": "aquasecurity/aquasec"}), "https://registry.terraform.io/providers/aquasecurity/aquasec/latest/docs/resources/image"
+				generateDocumentationUrl("aquasec_image", { "aquasec": "aquasecurity/aquasec" }), "https://registry.terraform.io/providers/aquasecurity/aquasec/latest/docs/resources/image"
 			);
 		});
 	});
@@ -54,7 +53,7 @@ suite('Generate Terraform Documentation Url Unit Tests', () => {
 	suite('Unofficial providers included in default provider and included in override setting give preference to user setting', () => {
 		test("aquasecurity", () => {
 			assert.strictEqual(
-				generateDocumentationUrl("gitlab_project", { "gitlab": "gitlabhq/gitlab-beta"}), "https://registry.terraform.io/providers/gitlabhq/gitlab-beta/latest/docs/resources/project"
+				generateDocumentationUrl("gitlab_project", { "gitlab": "gitlabhq/gitlab-beta" }), "https://registry.terraform.io/providers/gitlabhq/gitlab-beta/latest/docs/resources/project"
 			);
 		});
 	});
