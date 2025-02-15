@@ -59,7 +59,7 @@ suite('Generate Terraform Documentation Url Unit Tests', () => {
 		});
 	});
 
-	suite('LInking to Opentofu docs by chaging baseurl setting', () => {
+	suite('LInking to Opentofu docs by changing baseurl setting', () => {
 		test("aquasecurity", async () => {
 			assert.strictEqual(
 				generateDocumentationUrl("https://library.tf", "gitlab_project", { "gitlab": "gitlabhq/gitlab-beta" }),
