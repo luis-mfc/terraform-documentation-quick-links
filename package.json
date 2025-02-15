@@ -2,6 +2,7 @@
   "name": "terraform-documentation-quick-links",
   "displayName": "Terraform Documentation Quick Links",
   "description": "Easily find the relevant terraform documentation",
+  "repository": "https://github.com/luis-mfc/terraform-documentation-quick-links",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.97.0"
@@ -49,7 +50,8 @@
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --fix",
-    "test": "vscode-test"
+    "test": "vscode-test",
+    "package": "npx @vscode/vsce package"
   },
   "devDependencies": {
     "@types/vscode": "^1.97.0",
