@@ -2,30 +2,56 @@
   "name": "terraform-documentation-quick-links",
   "displayName": "Terraform Documentation Quick Links",
   "description": "Easily find the relevant terraform documentation",
+  "repository": "https://github.com/luis-mfc/terraform-documentation-quick-links",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.97.0"
   },
   "categories": [
-    "Other"
+    "Programming Languages"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onLanguage:terraform"
+  ],
   "main": "./out/extension.js",
   "contributes": {
-    "commands": [
-      {
-        "command": "terraform-documentation-quick-links.helloWorld",
-        "title": "Hello World"
-      }
-    ]
+    "configuration": {
+      "title": "Terraform Documentation Quick Links",
+      "properties": {
+        "terraform-documentation-quick-links.baseurl": {
+          "type": "string",
+          "description": "The base documentation url.",
+          "default": "https://registry.terraform.io"
+        },
+        "terraform-documentation-quick-links.providers": {
+          "type": "string",
+          "description": "Custom JSON object string for Terraform providers (e.g., '{\"provider\": \"org/provider\"}'). Overrides default provider list.",
+          "default": "{}"
+        }
+      },
+      "languages": [
+        {
+          "id": "terraform",
+          "aliases": [
+            "Terraform",
+            "HCL"
+          ],
+          "extensions": [
+            ".tf",
+            ".tfvars"
+          ]
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
-    "lint": "eslint src",
-    "test": "vscode-test"
+    "lint": "eslint src --fix",
+    "test": "vscode-test",
+    "package": "npx @vscode/vsce package"
   },
   "devDependencies": {
     "@types/vscode": "^1.97.0",
