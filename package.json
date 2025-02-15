@@ -7,11 +7,26 @@
     "vscode": "^1.97.0"
   },
   "categories": [
-    "Other"
+    "Programming Languages"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onLanguage:terraform"
+  ],
   "main": "./out/extension.js",
   "contributes": {
+    "languages": [
+      {
+        "id": "terraform",
+        "aliases": [
+          "Terraform",
+          "HCL"
+        ],
+        "extensions": [
+          ".tf",
+          ".tfvars"
+        ]
+      }
+    ],
     "commands": [
       {
         "command": "terraform-documentation-quick-links.helloWorld",

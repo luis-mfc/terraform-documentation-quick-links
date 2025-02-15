@@ -1,0 +1,5 @@
+{
+  "github": "integrations/github",
+  "gitlab": "gitlabhq/gitlab",
+  "cloudflare": "cloudflare/cloudflare"
+}
