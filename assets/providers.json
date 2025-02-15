@@ -1,5 +1,15 @@
 {
   "github": "integrations/github",
   "gitlab": "gitlabhq/gitlab",
-  "cloudflare": "cloudflare/cloudflare"
+  "cloudflare": "cloudflare/cloudflare",
+  "alicloud": "aliyun/alicloud",
+  "oracle": "oracle/oci",
+  "openstack": "terraform-provider-openstack/openstack",
+  "talos": "siderolabs/talos",
+  "argocd": "argoproj-labs/argocd",
+  "databricks": "databricks/databricks",
+  "datadog": "DataDog/datadog",
+  "splunk": "splunk/splunk",
+  "okta": "okta/okta",
+  "hcloud": "hetznercloud/hcloud"
 }
