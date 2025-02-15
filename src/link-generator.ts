@@ -1,16 +1,7 @@
 import * as vscode from 'vscode';
 import * as providerData from '../assets/providers.json';
 
-export function generateDocumentationUrl(resourceType: String, customProviders: Record<string, string>) {
-  const provider = resourceType.substring(0, resourceType.indexOf('_'));
-  const providers = providerData as Record<string, string>;
-
-  const providerPath = customProviders[provider] as string || providers[provider] as string || `hashicorp/${provider}`;
-
-  return `https://registry.terraform.io/providers/${providerPath}/latest/docs/resources/${resourceType.substring(provider.length + 1, resourceType.length)}`;
-}
-
-export function getCustomProviders() {
+function getCustomProviders() {
   const configuration = vscode.workspace.getConfiguration('terraform-documentation-quick-links');
   const customProvidersJSONString = configuration.get('providers') as string;
 
@@ -24,6 +15,15 @@ export function getCustomProviders() {
     console.error('Error parsing customProvidersJSON:', error);
     return {};
   }
+}
+
+export function generateDocumentationUrl(resourceType: String, customProviders: Record<string, string>) {
+  const provider = resourceType.substring(0, resourceType.indexOf('_'));
+  const providers = providerData as Record<string, string>;
+
+  const providerPath = customProviders[provider] as string || providers[provider] as string || `hashicorp/${provider}`;
+
+  return `https://registry.terraform.io/providers/${providerPath}/latest/docs/resources/${resourceType.substring(provider.length + 1, resourceType.length)}`;
 }
 
 export class TerraformLinker implements vscode.DocumentLinkProvider {
