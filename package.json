@@ -17,6 +17,11 @@
     "configuration": {
       "title": "Terraform Documentation Quick Links",
       "properties": {
+        "terraform-documentation-quick-links.baseurl": {
+          "type": "string",
+          "description": "The base documentation url.",
+          "default": "https://registry.terraform.io"
+        },
         "terraform-documentation-quick-links.providers": {
           "type": "string",
           "description": "Custom JSON object string for Terraform providers (e.g., '{\"provider\": \"org/provider\"}'). Overrides default provider list.",

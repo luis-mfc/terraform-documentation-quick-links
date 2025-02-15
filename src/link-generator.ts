@@ -1,8 +1,9 @@
 import * as vscode from 'vscode';
 import * as providerData from '../assets/providers.json';
 
+const configuration = vscode.workspace.getConfiguration('terraform-documentation-quick-links');
+
 function getCustomProviders() {
-  const configuration = vscode.workspace.getConfiguration('terraform-documentation-quick-links');
   const customProvidersJSONString = configuration.get('providers') as string;
 
   try {
@@ -17,19 +18,20 @@ function getCustomProviders() {
   }
 }
 
-export function generateDocumentationUrl(resourceType: String, customProviders: Record<string, string>) {
+export function generateDocumentationUrl(baseurl: String, resourceType: String, customProviders: Record<string, string>) {
   const provider = resourceType.substring(0, resourceType.indexOf('_'));
   const providers = providerData as Record<string, string>;
 
   const providerPath = customProviders[provider] as string || providers[provider] as string || `hashicorp/${provider}`;
 
-  return `https://registry.terraform.io/providers/${providerPath}/latest/docs/resources/${resourceType.substring(provider.length + 1, resourceType.length)}`;
+  return `${baseurl}/providers/${providerPath}/latest/docs/resources/${resourceType.substring(provider.length + 1, resourceType.length)}`;
 }
 
 export class TerraformLinker implements vscode.DocumentLinkProvider {
   provideDocumentLinks(document: vscode.TextDocument, token: vscode.CancellationToken): vscode.ProviderResult<vscode.DocumentLink[]> {
     const documentLinks: vscode.DocumentLink[] = [];
     const customProviders = getCustomProviders();
+    const baseurl = configuration.get('baseurl') as string;
 
     const regEx = /resource\s+"([^"]+)"\s+"([^"]+)"/g;
     let match;
@@ -42,7 +44,7 @@ export class TerraformLinker implements vscode.DocumentLinkProvider {
       const endIndex = startIndex + resourceType.length;
       const range = new vscode.Range(document.positionAt(startIndex), document.positionAt(endIndex));
 
-      const uri = vscode.Uri.parse(generateDocumentationUrl(resourceType, customProviders));
+      const uri = vscode.Uri.parse(generateDocumentationUrl(baseurl, resourceType, customProviders));
       const link = new vscode.DocumentLink(range, uri);
       documentLinks.push(link);
     }
