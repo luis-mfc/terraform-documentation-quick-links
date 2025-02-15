@@ -14,32 +14,36 @@
   ],
   "main": "./out/extension.js",
   "contributes": {
-    "languages": [
-      {
-        "id": "terraform",
-        "aliases": [
-          "Terraform",
-          "HCL"
-        ],
-        "extensions": [
-          ".tf",
-          ".tfvars"
-        ]
-      }
-    ],
-    "commands": [
-      {
-        "command": "terraform-documentation-quick-links.helloWorld",
-        "title": "Hello World"
-      }
-    ]
+    "configuration": {
+      "title": "Terraform Documentation Quick Links",
+      "properties": {
+        "terraform-documentation-quick-links.providers": {
+          "type": "string",
+          "description": "Custom JSON object string for Terraform providers (e.g., '{\"provider\": \"org/provider\"}'). Overrides default provider list.",
+          "default": "{}"
+        }
+      },
+      "languages": [
+        {
+          "id": "terraform",
+          "aliases": [
+            "Terraform",
+            "HCL"
+          ],
+          "extensions": [
+            ".tf",
+            ".tfvars"
+          ]
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
-    "lint": "eslint src",
+    "lint": "eslint src --fix",
     "test": "vscode-test"
   },
   "devDependencies": {
