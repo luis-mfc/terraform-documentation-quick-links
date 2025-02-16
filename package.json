@@ -27,6 +27,16 @@
           "type": "string",
           "description": "Custom JSON object string for Terraform providers (e.g., '{\"provider\": \"org/provider\"}'). Overrides default provider list.",
           "default": "{}"
+        },
+        "terraform-documentation-quick-links.resources": {
+          "type": "string",
+          "description": "Custom JSON object string for Terraform resources (e.g., '{\"google_project_iam_audit_config\": \"google_project_iam#google_project_iam_audit_config\"}'). Overrides default path structure.",
+          "default": "{}"
+        },
+        "terraform-documentation-quick-links.data-sources": {
+          "type": "string",
+          "description": "Custom JSON object string for Terraform data-sources (e.g., '{\"data-source\": \"data_source_name_in_link\"}'). Overrides default path structure.",
+          "default": "{}"
         }
       },
       "languages": [
