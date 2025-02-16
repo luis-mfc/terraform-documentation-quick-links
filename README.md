@@ -2,6 +2,7 @@
 Open the latest docs for any terraform data source or resource by clicking is name.
 
 - [terraform-documentation-quick-links](#terraform-documentation-quick-links)
+  - [Usage](#usage)
   - [Features](#features)
   - [Requirements](#requirements)
   - [Extension Settings](#extension-settings)
@@ -10,6 +11,10 @@ Open the latest docs for any terraform data source or resource by clicking is na
     - [0.0.3](#003)
     - [0.0.2](#002)
     - [0.0.1](#001)
+
+## Usage
+1. Package extension: `npm run package`
+2. [Install from `.vsix` file](https://code.visualstudio.com/docs/editor/extension-marketplace#_install-from-a-vsix)
 
 ## Features
 Adds documentation links to data sources and resources.
