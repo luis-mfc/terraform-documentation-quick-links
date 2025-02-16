@@ -14,7 +14,7 @@ suite('Generate Terraform Documentation Url Unit Tests', () => {
 		for (const [key, value] of Object.entries(testCases)) {
 			test(key, () => {
 				assert.strictEqual(
-					generateDocumentationUrl("https://registry.terraform.io", key, {}), value
+					generateDocumentationUrl("https://registry.terraform.io", "resource", key, {}), value
 				);
 			});
 		};
@@ -29,7 +29,7 @@ suite('Generate Terraform Documentation Url Unit Tests', () => {
 		for (const [key, value] of Object.entries(testCases)) {
 			test(key, () => {
 				assert.strictEqual(
-					generateDocumentationUrl("https://registry.terraform.io", key, {}), value
+					generateDocumentationUrl("https://registry.terraform.io", "resource", key, {}), value
 				);
 			});
 		};
@@ -38,7 +38,7 @@ suite('Generate Terraform Documentation Url Unit Tests', () => {
 	suite('Unofficial providers not included in default provider or included in override setting fallback to assuming official provider', () => {
 		test("aquasecurity", () => {
 			assert.strictEqual(
-				generateDocumentationUrl("https://registry.terraform.io", "aquasec_image", {}), "https://registry.terraform.io/providers/hashicorp/aquasec/latest/docs/resources/image"
+				generateDocumentationUrl("https://registry.terraform.io", "resource", "aquasec_image", {}), "https://registry.terraform.io/providers/hashicorp/aquasec/latest/docs/resources/image"
 			);
 		});
 	});
@@ -46,7 +46,7 @@ suite('Generate Terraform Documentation Url Unit Tests', () => {
 	suite('Unofficial providers not included in default provider but included in override setting', () => {
 		test("aquasecurity", () => {
 			assert.strictEqual(
-				generateDocumentationUrl("https://registry.terraform.io", "aquasec_image", { "aquasec": "aquasecurity/aquasec" }), "https://registry.terraform.io/providers/aquasecurity/aquasec/latest/docs/resources/image"
+				generateDocumentationUrl("https://registry.terraform.io", "resource", "aquasec_image", { "aquasec": "aquasecurity/aquasec" }), "https://registry.terraform.io/providers/aquasecurity/aquasec/latest/docs/resources/image"
 			);
 		});
 	});
@@ -54,7 +54,7 @@ suite('Generate Terraform Documentation Url Unit Tests', () => {
 	suite('Unofficial providers included in default provider and included in override setting give preference to user setting', () => {
 		test("aquasecurity", () => {
 			assert.strictEqual(
-				generateDocumentationUrl("https://registry.terraform.io", "gitlab_project", { "gitlab": "gitlabhq/gitlab-beta" }), "https://registry.terraform.io/providers/gitlabhq/gitlab-beta/latest/docs/resources/project"
+				generateDocumentationUrl("https://registry.terraform.io", "resource", "gitlab_project", { "gitlab": "gitlabhq/gitlab-beta" }), "https://registry.terraform.io/providers/gitlabhq/gitlab-beta/latest/docs/resources/project"
 			);
 		});
 	});
@@ -62,9 +62,24 @@ suite('Generate Terraform Documentation Url Unit Tests', () => {
 	suite('LInking to Opentofu docs by changing baseurl setting', () => {
 		test("aquasecurity", async () => {
 			assert.strictEqual(
-				generateDocumentationUrl("https://library.tf", "gitlab_project", { "gitlab": "gitlabhq/gitlab-beta" }),
+				generateDocumentationUrl("https://library.tf", "resource", "gitlab_project", { "gitlab": "gitlabhq/gitlab-beta" }),
 				"https://library.tf/providers/gitlabhq/gitlab-beta/latest/docs/resources/project"
 			);
 		});
+	});
+
+	suite('Official providers / Data Sources', () => {
+		const testCases = {
+			"aws_instance": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/instance",
+			"google_compute_instance": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/compute_instance"
+		};
+
+		for (const [key, value] of Object.entries(testCases)) {
+			test(key, () => {
+				assert.strictEqual(
+					generateDocumentationUrl("https://registry.terraform.io", "data", key, {}), value
+				);
+			});
+		};
 	});
 });
