@@ -3,7 +3,7 @@
   "displayName": "Terraform Documentation Quick Links",
   "description": "Easily find the relevant terraform documentation",
   "repository": "https://github.com/luis-mfc/terraform-documentation-quick-links",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.97.0"
   },
