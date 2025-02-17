@@ -1,3 +1,4 @@
 {
-  "google_project_service": "google_project_service"
+  "google_project_service": "google_project_service",
+  "google_vertex_ai_index": "google_vertex_ai_index"
 }
