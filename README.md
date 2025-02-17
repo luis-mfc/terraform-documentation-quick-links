@@ -7,10 +7,6 @@ Open the latest docs for any terraform data source or resource by clicking is na
   - [Requirements](#requirements)
   - [Extension Settings](#extension-settings)
   - [Known Issues](#known-issues)
-  - [Release Notes](#release-notes)
-    - [0.0.3](#003)
-    - [0.0.2](#002)
-    - [0.0.1](#001)
 
 ## Usage
 1. Package extension: `npm run package`
@@ -38,20 +34,3 @@ This extension contributes the following settings:
 - Some resources will not be properly resolved out of the box as they do not follow the normal url path structure:
   - See [the settings section](#extension-settings) above to manually add support to individual resources and or data sources
 - Modules/Provider docs not currently supported
-
-## Release Notes
-
-### 0.0.3
-- Refactor user settings;
-- Fix support for:
-  - `google_service_account`
-  - `google_project_iam_binding`
-  - `google_project_iam_policy`
-  - `google_project_iam_member`
-  - `google_project_iam_audit_config`
-
-### 0.0.2
-- Support Data Sources
-
-### 0.0.1
-- Support Resources
