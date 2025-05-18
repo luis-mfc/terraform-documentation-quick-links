@@ -1,5 +1,6 @@
 # terraform-documentation-quick-links
-Open the latest docs for any terraform data source or resource by clicking is name.
+Yet another vscode extention to allow opening the latest docs for any terraform data source or resource by clicking is name.
+Goal: build on existing solutions by support non standard resource links.
 
 - [terraform-documentation-quick-links](#terraform-documentation-quick-links)
   - [Usage](#usage)
