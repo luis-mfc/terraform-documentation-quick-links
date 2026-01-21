@@ -11,5 +11,7 @@
   "datadog": "DataDog/datadog",
   "splunk": "splunk/splunk",
   "okta": "okta/okta",
-  "hcloud": "hetznercloud/hcloud"
+  "hcloud": "hetznercloud/hcloud",
+  "honeycombio": "honeycombio/honeycombio",
+  "incident": "incident-io/incident"
 }
