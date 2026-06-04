@@ -10,8 +10,9 @@ Goal: build on existing solutions by support non standard resource links.
   - [Known Issues](#known-issues)
 
 ## Usage
-1. Package extension: `npm run package`
-2. [Install from `.vsix` file](https://code.visualstudio.com/docs/editor/extension-marketplace#_install-from-a-vsix)
+1. `npm i`
+2. Package extension: `npm run package`
+3. [Install from `.vsix` file](https://code.visualstudio.com/docs/editor/extension-marketplace#_install-from-a-vsix)
 
 ## Features
 Adds documentation links to data sources and resources.
