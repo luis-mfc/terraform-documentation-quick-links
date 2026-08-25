@@ -13,5 +13,6 @@
   "okta": "okta/okta",
   "hcloud": "hetznercloud/hcloud",
   "honeycombio": "honeycombio/honeycombio",
-  "incident": "incident-io/incident"
+  "incident": "incident-io/incident",
+  "opensearch": "opensearch-project/opensearch"
 }
